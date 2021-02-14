@@ -1,0 +1,263 @@
+:root {
+  /* ac´en este parte se esta 
+  definiendo la paleta de colores*/
+  --blanco: #ffffff;
+  --oscuro: #212121;
+  --primario: #ffc107;
+  --secundario: #0097a7;
+  --gris: #757575;
+  --grisClaro: #dfe9f3;
+}
+/*GLOBALES*/
+html {
+  font-size: 62.5%;
+  box-sizing: border-box;
+  scroll-snap-type: y mandatory;
+}
+*,
+*:before,
+*:after {
+  box-sizing: inherit;
+}
+
+body {
+  font-size: 16px; /* 1rem =10px */
+  font-family: "Krub", sans-serif;
+  background-image: linear-gradient(
+    to top,
+    var(--grisClaro) 0%,
+    var(--blanco) 100%
+  );
+}
+.contenedor {
+  max-width: 120rem; /* se coloca max antes del width para definir que como maximo... solo si hay un espacio disponible... 
+  si no toma el 100% */
+  margin: 0 auto 0 auto;
+}
+.boton {
+  background-color: var(--secundario); /*para el fondo del boton*/
+  color: var(--blanco); /*color letras*/
+  padding: 1rem 3rem; /*sepacion de lestrras de los bordes*/
+  margin-top: 1rem; /*separacion del contenido de arriba*/
+  font-size: 2rem; /*tamaño letra*/
+  text-decoration: none; /* para quitar la linea que aaprece en la parte inferior*/
+  text-transform: uppercase; /*colocar el texto que este en el boton en mayusculas*/
+  font-weight: bold; /* negrilla*/
+  border-radius: 0.5rem; /*borde del boton que quede redondeado las esquinas*/
+  width: 90%;
+  text-align: center;
+  border: none;
+}
+@media (min-width: 480px) {
+  .boton {
+    width: auto;
+  }
+}
+.boton:hover {
+  cursor: pointer;
+}
+.sombra {
+  -webkit-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.48);
+  -moz-box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.48); /* agrega prefijos en mozila*/
+  box-shadow: 0px 5px 15px 0px rgba(0, 0, 0, 0.48);
+  background-color: var(--blanco);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+
+/*tipografia*/
+h1 {
+  font-size: 3.8 rem;
+}
+h2 {
+  font-size: 2.8rem;
+}
+h3 {
+  font-size: 1.8rem;
+}
+
+h1,
+h2,
+h3 {
+  text-align: center;
+}
+/*UTILIDADES*/
+.w-sm-100 {
+  width: 100%;
+}
+@media (min-width: 768px) {
+  .w-sm-100 {
+    width: auto;
+  }
+}
+.flex {
+  display: flex;
+}
+
+.alinear-derecha {
+  justify-content: flex-end;
+}
+
+/*navegador*/
+.nav-bg {
+  background-color: var(--secundario);
+}
+.navegacion-principal {
+  display: flex;
+  flex-direction: column; /*crea el menu en linea vertical(ejemplo, inicio, sobre mi, clientes, contacto)uno encima del otro)*/
+}
+@media (min-width: 768px) {
+  .navegacion-principal {
+    flex-direction: row; /*permite crear el menu en linea horizontal*/
+    justify-content: space-between;
+  }
+}
+
+.navegacion-principal a {
+  display: block;
+  text-align: center;
+  color: var(--blanco); /*cambia color de letra*/
+  text-decoration: none; /*se utiliza para eliminar la linea debajo de la palabra del link*/
+  font-size: 2rem;
+  font-weight: 700;
+  padding: 1rem;
+}
+
+.navegacion-principal a:hover {
+  /* se utiliza el :hover con el objetivo de que al colocar el puntero sobre el elemento, este cambie
+  de color*/
+  background-color: var(--primario);
+  color: var(--oscuro);
+}
+.hero {
+  background-image: url(../img/hero.jpg);
+  background-repeat: no-repeat;
+  background-size: cover; /* permite organizar el tamaño de la imagen*/
+  height: 450px;
+  position: relative;
+  margin-bottom: 2rem;
+}
+.contenido-hero {
+  position: absolute;
+  background-color: rgba(0, 0, 0, 0.7); /*sintaxis anterior*/
+  background-color: rgb(0 0 0 / 70%);
+  width: 100%;
+  height: 100%;
+  /*se puede colocar para que abarue todo el contenido con el width y el height o con el uso de bottom: 0;left: 0;top: 0;right: 0;*/
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+.contenido-hero h2,
+.contenido-hero p {
+  color: var(--blanco);
+}
+.ubicacion {
+  display: flex;
+  align-items: flex-end;
+}
+
+/**scroll 
+.servicios,
+.navegacion-principal,
+.formulario {
+  scroll-snap-align: center;
+  scroll-snap-stop: always;
+}
+*/
+
+@media (min-width: 768px) {
+  .servicios {
+    display: grid;
+    grid-template-columns: repeat(
+      3,
+      1fr
+    ); /*esto quiere decir que toma 1 fraccion y divide en 3 fracciones(1fr+1fr+1fr)*/
+    column-gap: 1rem;
+  }
+}
+.servicio {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.servicio h3 {
+  color: var(--secundario);
+  font-weight: normal;
+  text-align: center; /*alinear texto*/
+}
+.servicio p {
+  line-height: 2; /* permite dar interlineado entre los parrafos*/
+}
+
+.servicio .iconos {
+  height: 15rem; /*altura del icono*/
+  width: 15rem; /*anchura del icono*/
+  background-color: var(--primario);
+  border-radius: 50%; /*al tener un cuadrado y colocar un valor de radius 50% da la apariencia d eun circulo*/
+  display: flex;
+  justify-content: space-evenly;
+  align-items: center;
+}
+
+/*contacto de formulario*/
+.formulario {
+  background-color: var(--gris);
+  width: min(
+    60rem 100%
+  ); /* toma dos parametros para utiliza rel valor más pequeño*/
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.formulario fieldset {
+  border: none;
+}
+.formulario legend {
+  text-align: center;
+  font-size: 1.8rem;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-bottom: 2rem;
+  color: var(--primario);
+}
+
+@media (min-width: 768px) {
+  .contenedor-campos {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto auto 20rem;
+    column-gap: 1rem;
+  }
+  .campo:nth-child(3),
+  .campo:nth-child(4) {
+    /*permite seleccionar el atributo campo que sea el tercero y modificar ese exactamente*/
+    grid-column: 1/3; /*permite que el elemento correo ocupe todo el especio entre la comuna 1 y la tres de la segunda fila*/
+  }
+}
+.campo {
+  margin-bottom: 1rem;
+}
+.campo label {
+  color: var(--blanco);
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+.campo textarea {
+  height: 17rem;
+  padding: 1rem;
+}
+
+.input-text {
+  width: 100%;
+  border: none;
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+}
+
+/* alineacion de footer*/
+.footer {
+  text-align: center;
+}
